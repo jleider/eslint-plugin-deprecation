@@ -289,7 +289,7 @@ function getJsDocDeprecation(tags: ts.JSDocTagInfo[]) {
   for (const tag of tags) {
     if (tag.name === 'deprecated') {
       return {
-        reason: Array.isArray(tag.text) ? tag.text.map(val => val.text).join('') : tag.text || ''
+        reason: Array.isArray(tag.text) ? tag.text.map(val => val.text).join('') : tag.text
       };
     }
   }
