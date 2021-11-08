@@ -288,11 +288,9 @@ function isCallExpression(
 function getJsDocDeprecation(tags: ts.JSDocTagInfo[]) {
   for (const tag of tags) {
     if (tag.name === 'deprecated') {
-      let reason = tag.text;
-      if (Array.isArray(reason)) {
-        reason = reason.map(val => val.text).join('');
-      }
-      return { reason: reason || '' };
+      return {
+        reason: Array.isArray(tag.text) ? tag.text.map(val => val.text).join('') : tag.text || ''
+      };
     }
   }
   return undefined;
